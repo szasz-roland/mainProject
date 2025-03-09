@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]; then
 	exit 1
 fi
 
-if $(whcich apache2); then
+if command -v apache2 >/dev/null; then
 	echo -e "\n Már telepítve van az apache2 \n"
 else
 	apt update && apt install apache2 -y && systemctl enable apache2 && systemctl status apache2
