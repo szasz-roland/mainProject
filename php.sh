@@ -25,7 +25,7 @@ echo "PHP verziók és hozzájuk tartozó modulok telepítve!"
 
 # Ellenőrzés
 for version in 7.3 7.4 8.0 8.1 8.2 8.3 8.4; do
-	if command -v php$version-cli >/dev/null 2>&1; then
+    if command -v php$version-cli >/dev/null 2>&1; then
         echo "PHP $version telepítve."
     else
         echo "PHP $version NINCS telepítve."
