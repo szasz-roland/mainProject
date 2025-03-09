@@ -1,13 +1,19 @@
 #!/bin/bash
 
-# Megnézi hogy sudo-val van-e futtatva
-if [ "$EUID" -ne 0 ]; then
-	echo -e "\n ⛔ sudo-val futtasd te bolond🥱 ⛔ \n"
-	exit 1
-fi
+# Csomaglista frissítése
+sudo apt update
 
-if command -v apache2 >/dev/null; then
-	echo -e "\n✅ Már telepítve van az apache2 ✅ \n"
+# Telepítés 
+sudo apt install apache2 -y
+
+# Engedélyezés és indítás
+sudo systemctl enable apache2
+sudo systemctl start apache2
+
+# Ellenőrzés
+if command -v apche2 &> /dev/null; then
+	echo "Apache2 telepítve"
+	sudo systemctl status apache2
 else
-	apt update && apt install apache2 -y && systemctl enable apache2 && systemctl status apache2
+	echo -e "Apache2 telepítés nem sikerült...\n OLVASD EL A HIBÁT!"
 fi
