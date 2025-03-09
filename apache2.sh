@@ -11,7 +11,7 @@ sudo systemctl enable apache2
 sudo systemctl start apache2
 
 # Ellenőrzés
-if command -v apche2 &> /dev/null; then
+if command -v apache2 >/dev/null 2>&1; then
 	echo "Apache2 telepítve"
 	sudo systemctl status apache2
 	exit 0
